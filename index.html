@@ -129,13 +129,12 @@
         </section>
     </main>
 
-    <script>
-        // التحقق إذا كان الجهاز موبايل، وإذا كان كذلك، إجبار التحويل إلى نسخة سطح المكتب
+        <script>
         function forceDesktopView() {
             let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
             if (isMobile) {
-                document.body.style.zoom = "1"; // تعطيل تكبير الصفحة على الموبايل
-                alert("يتم تحميل الموقع في وضع سطح المكتب لضمان أفضل تجربة استخدام.");
+                document.body.style.zoom = "1";
+                // تم إزالة سطر التنبيه فقط
             }
         }
 
