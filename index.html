@@ -11,6 +11,7 @@
             padding: 0;
             background-color: #f4f4f4;
             text-align: center;
+            min-width: 1024px; /* يجبر الصفحة على عرض نسخة سطح المكتب */
         }
         header {
             background: #007bff;
@@ -129,7 +130,17 @@
     </main>
 
     <script>
-        // البيانات الأصلية كاملة
+        // التحقق إذا كان الجهاز موبايل، وإذا كان كذلك، إجبار التحويل إلى نسخة سطح المكتب
+        function forceDesktopView() {
+            let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            if (isMobile) {
+                document.body.style.zoom = "1"; // تعطيل تكبير الصفحة على الموبايل
+                alert("يتم تحميل الموقع في وضع سطح المكتب لضمان أفضل تجربة استخدام.");
+            }
+        }
+
+        forceDesktopView();
+     
         const apps = [
             {
                 name: "Timo",
