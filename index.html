@@ -129,7 +129,7 @@
         </section>
     </main>
 
-        <script>
+    <script>
         function forceDesktopView() {
             let isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
             if (isMobile) {
@@ -344,7 +344,13 @@
             const verifyButton = document.getElementById(`verify-${type}-${index}`);
             const taskStartTime = taskTimers[taskKey];
 
-            if (!taskStartTime || (Date.now() - taskStartTime) < 30000) {
+            // تحديد الوقت المطلوب بناءً على نوع المهمة
+            let requiredTime = 30000; // 30 ثانية بشكل افتراضي
+            if (type === "task" && (index === 0 || index === 1)) {
+                requiredTime = 5000; // 5 ثوانٍ فقط للمهمتين الأولى والثانية
+            }
+
+            if (!taskStartTime || (Date.now() - taskStartTime) < requiredTime) {
                 alert("لم تقم بإكمال المهمة");
                 return;
             }
